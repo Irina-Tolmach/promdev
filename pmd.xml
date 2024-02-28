@@ -12,6 +12,8 @@
         <exclude name="LocalVariableCouldBeFinal"/>
         <exclude name="MethodArgumentCouldBeFinal"/>
         <exclude name="AtLeastOneConstructor"/>
+        <exclude name="LinguisticNaming"/>
+
     </rule>
     <rule ref="category/java/design.xml">
         <exclude name="LawOfDemeter"/>
