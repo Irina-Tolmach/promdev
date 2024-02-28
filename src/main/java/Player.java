@@ -7,7 +7,7 @@
 import java.util.Random;
 
 public abstract class Player {
-    Monster monster;
+    /* default */ Monster monster;
 
     /**
      * Finds monster tied to player
@@ -22,12 +22,8 @@ public abstract class Player {
      * @return either true or false
      */
     public boolean hasLost() {
-        if (monster.getHP() <= 0) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return monster.getHP() <= 0;
+
     }
 
     /**
@@ -38,12 +34,8 @@ public abstract class Player {
      * @return either true or false
      */
     public boolean isFasterThan(Player enemy) {
-        if (this.monster.getSpeed() >= enemy.getMonster().getSpeed()) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return this.monster.getSpeed() >= enemy.getMonster().getSpeed() ;
+
     }
 
     /**
@@ -52,18 +44,18 @@ public abstract class Player {
      * Super Effective modifier element has been added
      * Not very effective element has been added
      * @param player the opponent
-     * @param m int corresponding to monster move
+     * @param mmmmmmmm int corresponding to monster move
      */
     @SuppressWarnings({"PMD.CognitiveComplexity", "PMD.CompareObjectsWithEquals", "PMD.UseEqualsToCompareStrings"})
-    public void attack(Player player, int m) {
+    public void attack(Player player, int mmmmmmmm) {
         Random random = new Random();
         double roll = random.nextDouble();
         int isSuperEffective = 1;
 
-        System.out.println(this.monster.getName() + " uses "+ this.monster.getMove(m).getName());
+        System.out.println(this.monster.getName() + " uses "+ this.monster.getMove(mmmmmmmm).getName());
         
         //attack has missed
-        if (roll > this.monster.getMove(m).getAccuracy()) {
+        if (roll > this.monster.getMove(mmmmmmmm).getAccuracy()) {
             System.out.println("Attack missed");
         }
 
@@ -75,11 +67,11 @@ public abstract class Player {
             //Determines if attack is super or not very effective and determines modifier
             //multiplyed by 2 b/c using int later divided by 2
             for(int i=0; i <= 2; i++) {
-                if (this.monster.getMove(m).getType() == weakness[i]) { 
+                if (this.monster.getMove(mmmmmmmm).getType() == weakness[i]) {
                     isSuperEffective = 4;
                     break;
                 }
-                if (this.monster.getMove(m).getType() == strength[i]) {
+                if (this.monster.getMove(mmmmmmmm).getType() == strength[i]) {
                     isSuperEffective = 1;
                     break;
                 }
@@ -89,8 +81,8 @@ public abstract class Player {
             }
 
             //Damage calculator
-            int damage = ((this.monster.getAttack() + this.monster.getMove(m).getPower() 
-                           - player.monster.getDefense()));
+            int damage = this.monster.getAttack() + this.monster.getMove(mmmmmmmm).getPower()
+                           - player.monster.getDefense();
             damage = (damage *isSuperEffective) / 2; //adjusts for dealing with int
             player.monster.hp -= damage;
 
