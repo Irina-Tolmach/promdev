@@ -85,11 +85,12 @@ public abstract class Player {
                            - player.monster.getDefense();
             damage = (damage *isSuperEffective) / 2; //adjusts for dealing with int
             player.monster.hp -= damage;
-
-            if (isSuperEffective == 4) {
+            int magicfour = 4;
+            int magicone = 1;
+            if (isSuperEffective == magicfour) {
                 System.out.println("It's super effective");
             }
-            if (isSuperEffective == 1) {
+            if (isSuperEffective == magicone) {
                 System.out.println("It's not very effective");
             }
             System.out.println(damage + " points of damage were done to " + player.monster.getName());
